@@ -8,6 +8,7 @@ int check_stack(stack **head)
 void Remove_first(stack **head)
 {
     stack *temp;
+    tester;
 
     if (!head || !*head)
         return;
