@@ -1,25 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_display.c                                    :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 18:28:01 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/08 18:28:02 by yaabdoul         ###   ########.fr       */
+/*   Created: 2025/12/08 18:27:57 by yaabdoul          #+#    #+#             */
+/*   Updated: 2025/12/08 18:27:58 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/stack.h"
-
-void display_data(stack **head)
-{
-    stack *temp = *head;
-
-    while (temp)
-    {
-        printf("%d ", temp->element);
-        temp = temp->next;
-    }
-    printf("\n");
-}
