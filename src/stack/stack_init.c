@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 18:28:03 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/08 18:28:04 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:54:19 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ stack *creatstack(int element)
     return s;
 }
 
-int isert_at_top(stack **head, int element)
+int insert_at_top(stack **head, int element)
 {
     stack *node = creatstack(element);
     if (!node)

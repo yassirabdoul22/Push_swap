@@ -6,24 +6,14 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 18:27:52 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/08 18:27:53 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:52:17 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
 #include <unistd.h>
 
-int	stack_size(stack *a)
-{
-	int i = 0;
 
-	while (a)
-	{
-		i++;
-		a = a->next;
-	}
-	return (i);
-}
 
 
 /* Push_swap radix sort pour grands ensembles */

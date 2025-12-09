@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 18:28:06 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/08 18:28:07 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:54:49 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int pop(stack **st)
 
 void push(stack **head, int element)
 {
-    if (isert_at_top(head, element))
+    if (insert_at_top(head, element))
         printf("Stack Overflow!\n");
 }
 

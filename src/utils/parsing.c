@@ -6,9 +6,11 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 17:10:19 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/08 18:28:17 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/09 14:51:49 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../includes/stack.h"
 
 void	ft_free(char **elements)
 {
@@ -27,7 +29,6 @@ int parse_args(stack **a,int ac,char **argv)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	j = 0;
 	i = 1;
@@ -39,11 +40,15 @@ int parse_args(stack **a,int ac,char **argv)
 		j = 0;
 		while(digits[j])
 		{
-			if(!is_number(token[j]) || !insert_value(a,ft_atol(token[j])))
+			while (digits[j])
 			{
-				write(2, "Error\n", 6);
-				ft_free(digits);
-    				return 0;    
+    			if (!is_number(digits[j]) || !insert_value(a, digits[j]))
+    			{
+      				  write(2, "Error\n", 6);
+       				  ft_free(digits);
+       			      return 0;
+  			   }	
+    			j++;
 			}
 
 		}
