@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:47:32 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/09 14:53:51 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:14:51 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack
 {
     int             element;
     struct s_stack *next;
+    int index;
 }   stack;
 
 /* -------- stack_init.c -------- */
@@ -34,6 +35,9 @@ void    Remove_first(stack **head);
 int     pop(stack **st);
 void    push(stack **head, int element);
 int     peek(stack **st);
+void Remove_first(stack **head);
+int ft_is_sorted(stack *a);
+int ft_stack_size(stack *s);
 
 /* -------- stack_display.c -------- */
 void    display_data(stack **head);

@@ -6,11 +6,12 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:43:41 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/09 14:43:58 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/09 16:12:14 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../includes/stack.h"
+#include "../../includes/stack.h"
+
 
 int is_number(char *str)
 {

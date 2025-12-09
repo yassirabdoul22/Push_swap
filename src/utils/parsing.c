@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 17:10:19 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/09 14:51:49 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/09 19:48:00 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int parse_args(stack **a,int ac,char **argv)
 	int	j;
 
 	j = 0;
-	i = 1;
-	while(i<ac)
+	i = ac -1;
+	while(i >0)
 	{
 		char	**digits = ft_split(argv[i],' ');
 		if(!digits)
@@ -53,7 +53,7 @@ int parse_args(stack **a,int ac,char **argv)
 
 		}
 		ft_free(digits);
-        	i++;
+        	i--;
 	}
 	return 1;
 }
