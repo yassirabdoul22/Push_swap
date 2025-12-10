@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:43:41 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/09 16:12:14 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:03:42 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ int insert_value(stack **a, char *str)
     if (already_exist(*a, ival))
         return 0;
 
-    insert_at_top(a, ival);
+    insert_at_bottom(a, ival);
     return 1;
 }

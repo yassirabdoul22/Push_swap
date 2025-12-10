@@ -36,12 +36,12 @@ int main(int ac, char **argv)
             Remove_first(&a);
         return 0;
     }
-
+    display_data(&a);
     push_swap(&a, &b);
 
-    // // Afficher stack après tri
-    // printf("Stack a après tri : ");
-    // display_data(&a);
+    //Afficher stack après tri
+    printf("Stack a après tri : ");
+    display_data(&a);
 
     while (a)
         Remove_first(&a);

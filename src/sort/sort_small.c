@@ -24,17 +24,27 @@ int stack_size(stack *a)
     }    
     return (i);
 }
+int is_sorted(stack *a)
+{
+    while (a && a->next)
+    {
+        if (a->element > a->next->element)
+            return 0;
+        a = a->next;
+    }
+    return 1;
+}
 
 void sort_three(stack **a)
 {
     if (!a || !*a || !(*a)->next || !(*a)->next->next)
         return;
 
+
     int first = (*a)->element;
     int second = (*a)->next->element;
     int third = (*a)->next->next->element;
 
-   
     if (first > second && second < third && first < third)
     {
         sa(a, 0);
@@ -75,7 +85,9 @@ int find_index(stack *a, int value)
 
 int find_min(stack *a)
 {
-    int min = a->element;
+    int min;
+    
+    min = a->element;
     while (a)
     {
         if (a->element < min)
@@ -87,20 +99,28 @@ int find_min(stack *a)
 
 void sort_five(stack **a, stack **b)
 {
+    int min;
+    int idx;
+    int size;
+
+    if(!a || !*a)
+        return;
+    if (is_sorted(*a))
+        return;
     while (stack_size(*a) > 3)
     {
-        int min = find_min(*a);
-        int idx = find_index(*a, min);
-        int size = stack_size(*a);
-
-        if (idx <= size / 2)
-            while ((*a)->element != min)
+        min = find_min(*a);
+      
+        while ((*a)->element != min)
+        {
+            idx = find_index(*a, min);  
+            size = stack_size(*a); 
+            if(idx <= size / 2)
                 ra(a, 0);
-        else
-            while ((*a)->element != min)
+            else
                 rra(a, 0);
-
-        pb(a, b);
+        }
+        pb(a,b);
     }
 
     sort_three(a);
