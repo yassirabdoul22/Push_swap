@@ -6,17 +6,20 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:05:57 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/10 17:08:06 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/10 20:40:55 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
-
 # include <stdlib.h>
 # include <stdio.h>
+#include <string.h> 
 # include <unistd.h>
 # include <limits.h>
+# include "stdint.h"
+
+#define BUFFER_SIZE 32
 
 typedef struct s_stack
 {
@@ -26,9 +29,10 @@ typedef struct s_stack
 }   stack;
 
 stack   *creatstack(int element);
-
+size_t	ft_strlen(char *s);
+char *ft_strjoin(char *s1, char *s2);
 int     insert_at_bottom(stack **head, int element); 
-
+void execute_operations(stack **a, stack **b);
 int     stack_size(stack *a);
 int     ft_stack_size(stack *s);
 int     ft_is_sorted(stack *a);
@@ -40,6 +44,7 @@ void    push(stack **head, int element);
 int     peek(stack **st);
 
 void    display_data(stack **head);
+int apply_operation(stack **a, stack **b, const char *op);
 
 void    sort_three(stack **a);
 void    sort_five(stack **a, stack **b);
@@ -62,15 +67,35 @@ void    rra(stack **a, int iscalled);
 void    rrb(stack **b, int iscalled);
 void    rrr(stack **a, stack **b);
 
+char *get_next_operation_from_buffer(char **buffer);
 int     is_number(char *str);
 int     already_exist(stack *stk, int value);
 long    ft_atol(char *str);
 int     insert_value(stack **a, char *str);
 int     parse_args(stack **a, int ac, char **argv);
-void    ft_free(char **elements);
+void    ft_free(char **fr);
 char    **ft_split(char *str, char c);
 int     is_separator(char c, char sep);
 int     count_words(char *str, char sep);
 char    *malloc_word(char *str, char sep);
 
+
+int     ft_strchr(char *s, char c);
+size_t  ft_strlen(char *s);
+void    *ft_calloc(size_t count, size_t size);
+char    *ft_strdup(const char *s);
+int     ft_strcmp(const char *s1, const char *s2);
+char    *ft_strjoin(char *s1, char *s2);
+
+
+char    *read_operations(int fd);
+char    *extract_operation(char *buffer);
+char    *update_buffer(char *buffer);
+char    *get_next_operation_from_buffer(char **buffer);
+
+
+char    *read_operations(int fd);
+char    *extract_operation(char *buffer);
+char    *update_buffer(char *buffer);
+char    *get_next_operation_from_buffer(char **buffer);
 #endif
