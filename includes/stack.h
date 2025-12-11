@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:05:57 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/10 20:40:55 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/11 19:37:39 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@
 typedef struct s_stack
 {
     int             element;
-    struct s_stack *next;
+    int             cost_a;
+    int             cost_b;
+    
     int             index;
+    struct s_stack *target;
+    struct s_stack *next;
 }   stack;
 
 stack   *creatstack(int element);
@@ -54,18 +58,18 @@ int     find_index(stack *a, int value);
 
 void    sa(stack **a, int iscalled);
 void    sb(stack **b, int iscalled);
-void    ss(stack **a, stack **b);
+void    ss(stack **a, stack **b,int check);
 
-void    pa(stack **a, stack **b);
-void    pb(stack **a, stack **b);
+void    pa(stack **a, stack **b,int called);
+void    pb(stack **a, stack **b,int called);
 
 void    ra(stack **a, int iscalled);
 void    rb(stack **b, int iscalled);
-void    rr(stack **a, stack **b);
+void    rr(stack **a, stack **b,int check);
 
 void    rra(stack **a, int iscalled);
 void    rrb(stack **b, int iscalled);
-void    rrr(stack **a, stack **b);
+void    rrr(stack **a, stack **b,int check);
 
 char *get_next_operation_from_buffer(char **buffer);
 int     is_number(char *str);
@@ -98,4 +102,20 @@ char    *read_operations(int fd);
 char    *extract_operation(char *buffer);
 char    *update_buffer(char *buffer);
 char    *get_next_operation_from_buffer(char **buffer);
+
+stack *find_smallest(stack *a);
+void find_target(stack *a, stack *b);
+void calculate_costs(stack *a, stack *b);
+stack *find_cheapest(stack *b);
+void double_move(stack **a, stack **b, stack *n);
+void execute_move(stack **a, stack **b, stack *n);
+void turk_sort(stack **a, stack **b);
+
+// Utilitaires
+int ft_abs(int cost);
+int get_cost(int pos, int size);
+int find_position(stack *s, int index);
+void reset_index(stack *a);
+void assign_index(stack *a);
+void print_stack(stack *s, char *name);
 #endif

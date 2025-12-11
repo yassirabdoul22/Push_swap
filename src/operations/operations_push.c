@@ -6,31 +6,41 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 18:27:41 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/09 17:51:14 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/11 19:17:56 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
 
 
-void pa(stack **a, stack **b)
+void pa(stack **a, stack **b, int called)
 {
-    if(!b || !*b)
+    stack *tmp;
+
+    if (!b || !*b)
         return;
 
-    int value = pop(b);
-    push(a, value);
+    tmp = *b;          // prendre le node en tête de B
+    *b = (*b)->next;   // retirer ce node de B
+    tmp->next = *a;    // l’ajouter au sommet de A
+    *a = tmp;          // mettre à jour A
 
-    write(1, "pa\n", 3);
+    if (!called)
+        write(1, "pa\n", 3);
 }
 
-void pb(stack **a, stack **b)
+void pb(stack **a, stack **b, int called)
 {
-    if(!a || !*a)
+    stack *tmp;
+
+    if (!a || !*a)
         return;
 
-    int value = pop(a);
-    push(b, value);
+    tmp = *a;          // prendre le node en tête de A
+    *a = (*a)->next;   // retirer ce node de A
+    tmp->next = *b;    // l’ajouter au sommet de B
+    *b = tmp;          // mettre à jour B
 
-    write(1, "pb\n", 3);
+    if (!called)
+        write(1, "pb\n", 3);
 }

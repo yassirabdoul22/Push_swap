@@ -79,11 +79,7 @@ void execute_operations(stack **a, stack **b)
 {
     char *buffer = read_operations(STDIN_FILENO);
     if (!buffer || !*buffer)
-    {
-        write(2, "Error\n", 6);
-        return;
-    }
-
+            return;
     char *op;
     while ((op = get_next_operation_from_buffer(&buffer)) != NULL)
     {

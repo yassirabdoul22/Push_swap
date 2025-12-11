@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 16:25:56 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/09 17:51:01 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/10 23:06:20 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ void rrb(stack **b, int iscalled)
         write(1, "rrb\n", 4);
 }
 
-void rrr(stack **a, stack **b)
+void rrr(stack **a, stack **b,int check)
 {
     rra(a, 1);
     rrb(b, 1);
-    write(1, "rrr\n", 4);
+    if(!check)
+        write(1, "rrr\n", 4);
 }

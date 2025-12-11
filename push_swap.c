@@ -8,15 +8,15 @@ void push_swap(stack **a, stack **b)
         return;
     else if (size == 2)
     {
-        if ((*a)->element > (*a)->next->element)
-            sa(a, 1);
+        if (!ft_is_sorted(*a))
+            sa(a, 0);
     }
     else if (size == 3)
         sort_three(a);
     else if (size <= 5)
         sort_five(a, b);
-    //else
-        //sort_big(a, b);
+    else
+        turk_sort(a, b);
 }
 
 int main(int ac, char **argv)
@@ -36,12 +36,9 @@ int main(int ac, char **argv)
             Remove_first(&a);
         return 0;
     }
-    display_data(&a);
-    push_swap(&a, &b);
 
-    //Afficher stack après tri
-    printf("Stack a après tri : ");
-    display_data(&a);
+    assign_index(a);
+    push_swap(&a, &b);
 
     while (a)
         Remove_first(&a);

@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 18:27:49 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/09 17:50:01 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/10 23:07:01 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void sb(stack **b, int iscalled)
         write(1, "sb\n", 3);
 }
 
-void ss(stack **a, stack **b)
+void ss(stack **a, stack **b,int check)
 {
     sa(a, 1);
     sb(b, 1);
-    write(1, "ss\n", 3);
+    if(!check)
+        write(1, "ss\n", 3);
 }

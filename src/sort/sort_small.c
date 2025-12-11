@@ -12,28 +12,8 @@
 
 #include "../../includes/stack.h"
 
-int stack_size(stack *a)
-{
-    int i;
 
-    i = 0;
-    while(a)
-    {
-        i++;
-        a = a->next;
-    }    
-    return (i);
-}
-int ft_is_sorted(stack *a)
-{
-    while (a && a->next)
-    {
-        if (a->element > a->next->element)
-            return 0;
-        a = a->next;
-    }
-    return 1;
-}
+
 
 void sort_three(stack **a)
 {
@@ -113,10 +93,10 @@ void sort_five(stack **a, stack **b)
             else
                 rra(a, 0);
         }
-        pb(a,b);
+        pb(a,b,0);
     }
     sort_three(a);
     while (*b)
-        pa(a, b);
+        pa(a, b,0);
 }
 
