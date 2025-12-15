@@ -6,60 +6,58 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 16:25:56 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/10 23:06:20 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/14 13:17:29 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
 
-void rra(stack **a, int iscalled)
+void	rra(t_stack **a, int iscalled)
 {
-    if(!a || !*a || !(*a)->next)
-        return;
+	t_stack	*prev;
+	t_stack	*last;
 
-    stack *prev = NULL;
-    stack *last = *a;
-
-    while(last->next)
-    {
-        prev = last;
-        last = last->next;
-    }
-
-    prev->next = NULL;
-    last->next = *a;
-    *a = last;
-
-    if(!iscalled)
-        write(1, "rra\n", 4);
+	if (!a || !*a || !(*a)->next)
+		return ;
+	prev = NULL;
+	last = *a;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *a;
+	*a = last;
+	if (!iscalled)
+		write(1, "rra\n", 4);
 }
 
-void rrb(stack **b, int iscalled)
+void	rrb(t_stack **b, int iscalled)
 {
-    if(!b || !*b || !(*b)->next)
-        return;
+	t_stack	*prev;
+	t_stack	*last;
 
-    stack *prev = NULL;
-    stack *last = *b;
-
-    while(last->next)
-    {
-        prev = last;
-        last = last->next;
-    }
-
-    prev->next = NULL;
-    last->next = *b;
-    *b = last;
-
-    if(!iscalled)
-        write(1, "rrb\n", 4);
+	if (!b || !*b || !(*b)->next)
+		return ;
+	prev = NULL;
+	last = *b;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *b;
+	*b = last;
+	if (!iscalled)
+		write(1, "rrb\n", 4);
 }
 
-void rrr(stack **a, stack **b,int check)
+void	rrr(t_stack **a, t_stack **b, int check)
 {
-    rra(a, 1);
-    rrb(b, 1);
-    if(!check)
-        write(1, "rrr\n", 4);
+	rra(a, 1);
+	rrb(b, 1);
+	if (!check)
+		write(1, "rrr\n", 4);
 }

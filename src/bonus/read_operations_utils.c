@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 18:40:01 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/10 20:58:04 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/12 23:39:26 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ char	*ft_strdup(const char *s)
 	str[i] = '\0';
 	return (str);
 }
-
 
 char	*ft_strjoin(char *s1, char *s2)
 {

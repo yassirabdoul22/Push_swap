@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 17:10:19 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/10 17:02:50 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/14 13:25:07 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_free(char **elements)
 {
 	int	k;
-	
+
 	k = 0;
-	while(elements[k]!=NULL)
+	while (elements[k] != NULL)
 	{
 		free(elements[k]);
 		k++;
@@ -25,37 +25,55 @@ void	ft_free(char **elements)
 	free(elements);
 }
 
-int parse_args(stack **a,int ac,char **argv)
+void	clear_stack(t_stack **s)
 {
-	int	i;
+	t_stack	*tmp;
+
+	if (!s || !*s)
+		return ;
+	while (*s)
+	{
+		tmp = (*s)->next;
+		free(*s);
+		*s = tmp;
+	}
+	*s = NULL;
+}
+
+static int	insert_digits(t_stack **a, char **digits)
+{
 	int	j;
 
 	j = 0;
-	i = 1;
-	while(i < ac)
+	while (digits[j])
 	{
-		char	**digits = ft_split(argv[i],' ');
-		if(!digits)
-			return 0;
-		j = 0;
-		while(digits[j])
+		if (!is_number(digits[j]) || !insert_value(a, digits[j]))
 		{
-			while (digits[j])
-			{
-    			if (!is_number(digits[j]) || !insert_value(a, digits[j]))
-    			{
-      				  write(2, "Error\n", 6);
-       				  ft_free(digits);
-       			      return 0;
-  			   }	
-    			j++;
-			}
-
+			write(2, "Error\n", 6);
+			clear_stack(a);
+			ft_free(digits);
+			return (0);
 		}
-		ft_free(digits);
-        	i++;
+		j++;
 	}
-	return 1;
+	ft_free(digits);
+	return (1);
 }
 
+int	parse_args(t_stack **a, int ac, char **argv)
+{
+	int		i;
+	char	**digits;
 
+	i = 1;
+	while (i < ac)
+	{
+		digits = ft_split(argv[i], ' ');
+		if (!digits)
+			return (0);
+		if (!insert_digits(a, digits))
+			return (0);
+		i++;
+	}
+	return (1);
+}

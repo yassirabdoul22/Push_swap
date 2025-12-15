@@ -1,111 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/13 19:19:54 by yaabdoul          #+#    #+#             */
+/*   Updated: 2025/12/14 13:28:00 by yaabdoul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/stack.h"
 
-// int stack_size(stack *a)
-// {
-//     int i;
-
-//     i = 0;
-//     while(a)
-//     {
-//         i++;
-//         a = a->next;
-//     }    
-//     return (i);
-// }
-// void reset_index(stack *a)
-// {
-//     while (a)
-//     {
-//         a->index = -1;
-//         a = a->next;
-//     }
-// }
-
-void assign_index(stack *a)
+int	ft_abs(int n)
 {
-    int size = stack_size(a);
-    if (size == 0)
-        return;
-
-    int *arr = malloc(sizeof(int) * size);
-    if (!arr)
-        return; // vérifie l'allocation mémoire
-
-    stack *tmp = a;
-    int i = 0;
-
-    // Copier les éléments dans un tableau
-    while (tmp)
-    {
-        arr[i++] = tmp->element;
-        tmp = tmp->next;
-    }
-
-    // Tri simple du tableau (tri à bulles)
-    for (int j = 0; j < size - 1; j++)
-    {
-        for (int k = j + 1; k < size; k++)
-        {
-            if (arr[j] > arr[k])
-            {
-                int t = arr[j];
-                arr[j] = arr[k];
-                arr[k] = t;
-            }
-        }
-    }
-
-    // Assigner l’index à chaque élément selon sa position dans le tableau trié
-    tmp = a;
-    while (tmp)
-    {
-        for (i = 0; i < size; i++)
-        {
-            if (tmp->element == arr[i])
-            {
-                tmp->index = i;
-                break;
-            }
-        }
-        tmp = tmp->next;
-    }
-
-    free(arr);
+	if (n < 0)
+		return (-n);
+	return (n);
 }
-int ft_is_sorted(stack *a)
+
+int	stack_size(t_stack *s)
 {
-    while (a && a->next)
-    {
-        if (a->element > a->next->element)
-            return 0;
-        a = a->next;
-    }
-    return 1;
+	int	size;
+
+	size = 0;
+	while (s)
+	{
+		size++;
+		s = s->next;
+	}
+	return (size);
 }
-// int     ft_abs(int cost)
-// {
-//     if(cost < 0)
-//         return -cost;
-//     return cost;
-// }
-// int get_cost (int pos , int size)
-// {
-//     if(pos <= size / 2)
-//         return pos;
-//     return -(size - pos);
-// }
 
-// int find_position(stack *s,int index)
-// {
-//     int pos;
+int	ft_is_sorted(t_stack *a)
+{
+	while (a && a->next)
+	{
+		if (a->element > a->next->element)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
 
-//     pos = 0;
-//     while(s)
-//     {
-//         if(s->index == index)
-//             return pos;
-//         pos++;
-//         s = s->next;
-//     }
-//     return 0;
-// }
+int	find_position(t_stack *s, int index)
+{
+	int	pos;
+
+	pos = 0;
+	while (s)
+	{
+		if (s->index == index)
+			return (pos);
+		pos++;
+		s = s->next;
+	}
+	return (-1);
+}
+
+t_stack	*find_smallest(t_stack *a)
+{
+	t_stack	*min;
+
+	min = a;
+	while (a)
+	{
+		if (a->index < min->index)
+			min = a;
+		a = a->next;
+	}
+	return (min);
+}
