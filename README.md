@@ -134,5 +134,3 @@ make
 ./push_swap 4 67 3 87 23
 
 
-Exemple :
-
