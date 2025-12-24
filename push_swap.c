@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 23:03:12 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/14 13:17:48 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/23 19:02:10 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ int	main(int ac, char **argv)
 		return (0);
 	if (!parse_args(&a, ac, argv))
 		return (1);
-	if (check_stack(&a))
-	{
-		while (a)
-			remove_first(&a);
-		return (0);
-	}
 	assign_index(a);
 	push_swap(&a, &b);
 	while (a)

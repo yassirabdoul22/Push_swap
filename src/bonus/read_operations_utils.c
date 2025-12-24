@@ -6,23 +6,25 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 18:40:01 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/12 23:39:26 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/20 20:16:26 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
 
-int	ft_strchr(char *s, char c)
+char	*ft_strchr(const char *s, int c)
 {
 	if (!s)
-		return (0);
+		return (NULL);
 	while (*s)
 	{
-		if (*s == c)
-			return (1);
+		if (*s == (char)c)
+			return ((char *)s);
 		s++;
 	}
-	return (0);
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
 }
 
 size_t	ft_strlen(char *s)

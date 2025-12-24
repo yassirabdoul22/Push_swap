@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 23:37:10 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/14 13:34:23 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/20 21:08:21 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*extract_operation(char *buffer)
 
 	if (!buffer)
 		return (NULL);
-	newline = strchr(buffer, '\n');
+	newline = ft_strchr(buffer, '\n');
 	if (!newline)
 		return (NULL);
 	len = newline - buffer;
@@ -55,7 +55,7 @@ char	*extract_operation(char *buffer)
 	op = (char *)calloc(len + 1, sizeof(char));
 	if (!op)
 		return (NULL);
-	strncpy(op, buffer, len);
+	ft_strncpy(op, buffer, len);
 	return (op);
 }
 
@@ -66,7 +66,7 @@ char	*update_buffer(char *buffer)
 
 	if (!buffer)
 		return (NULL);
-	newline = strchr(buffer, '\n');
+	newline = ft_strchr(buffer, '\n');
 	if (!newline)
 		return (NULL);
 	tmp = strdup(newline + 1);
@@ -96,9 +96,10 @@ void	execute_operations(t_stack **a, t_stack **b)
 	char	*buffer;
 	char	*op;
 
-	buffer = read_operations(STDIN_FILENO);
+	buffer = read_operations(0);
 	if (!buffer || !*buffer)
 		return ;
+	op = get_next_operation_from_buffer(&buffer);
 	while (op != NULL)
 	{
 		if (!apply_operation(a, b, op))

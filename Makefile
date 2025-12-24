@@ -6,7 +6,7 @@
 #    By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/08 18:28:19 by yaabdoul          #+#    #+#              #
-#    Updated: 2025/12/10 20:31:20 by yaabdoul         ###   ########.fr        #
+#    Updated: 2025/12/20 17:41:25 by yaabdoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,26 +16,45 @@ BONUS_NAME  = checker
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
-# ---------------------------------------------------------------------------- #
-#                                  SOURCES                                     #
-# ---------------------------------------------------------------------------- #
-
 SRC_DIRS    = ./src/operations ./src/sort ./src/stack ./src/utils
 
 SRCS        = push_swap.c \
-              $(shell find $(SRC_DIRS) -name "*.c")
+              src/operations/operations_push.c \
+              src/operations/operations_rotate.c \
+              src/operations/operations_reverse_rotate.c \
+              src/operations/operations_swap.c \
+              src/sort/sort_big.c \
+              src/sort/sort_big_utils.c \
+              src/sort/sort_big_utils1.c \
+              src/sort/sort_small.c \
+              src/sort/sort_utils.c \
+              src/sort/sort_utils1.c \
+              src/stack/stack_init.c \
+              src/utils/ft_split.c \
+              src/utils/parsing.c \
+              src/utils/parsing_utils.c
 
 BONUS_SRCS  = src/bonus/checker.c \
               src/bonus/read_operations.c \
               src/bonus/read_operations_utils.c \
-              $(shell find $(SRC_DIRS) -name "*.c")
+              src/operations/operations_push.c \
+              src/operations/operations_rotate.c \
+              src/operations/operations_reverse_rotate.c \
+              src/operations/operations_swap.c \
+              src/sort/sort_big.c \
+              src/sort/sort_big_utils.c \
+              src/sort/sort_big_utils1.c \
+              src/sort/sort_small.c \
+              src/sort/sort_utils.c \
+              src/sort/sort_utils1.c \
+              src/stack/stack_init.c \
+              src/utils/ft_split.c \
+              src/utils/parsing.c \
+              src/utils/parsing_utils.c
 
 OBJS        = $(SRCS:.c=.o)
 BONUS_OBJS  = $(BONUS_SRCS:.c=.o)
 
-# ---------------------------------------------------------------------------- #
-#                                  RULES                                       #
-# ---------------------------------------------------------------------------- #
 
 all: $(NAME)
 

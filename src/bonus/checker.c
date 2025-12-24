@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 18:38:35 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/14 13:30:45 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/20 21:04:43 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,23 @@ void	ft_fr(char *ptr)
 {
 	if (ptr)
 		free(ptr);
+}
+
+void	ft_strncpy(char *dst, const char *src, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dst[i] = '\0';
+		i++;
+	}
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
@@ -78,8 +95,8 @@ int	main(int argc, char **argv)
 	else
 		write(1, "KO\n", 3);
 	while (a)
-		Remove_first(&a);
+		remove_first(&a);
 	while (b)
-		Remove_first(&b);
+		remove_first(&b);
 	return (0);
 }

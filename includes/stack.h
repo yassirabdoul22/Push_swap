@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:05:57 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/15 20:44:03 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/20 21:09:32 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include <stdio.h>
-# include <string.h>
 # include <stdint.h>
 
 typedef struct s_stack
@@ -37,7 +35,6 @@ int		insert_at_top(t_stack **head, int element);
 int		stack_size(t_stack *s);
 
 int		ft_is_sorted(t_stack *a);
-int		check_stack(t_stack **head);
 void	remove_first(t_stack **head);
 /* Parsing */
 int		is_number(char *str);
@@ -48,7 +45,7 @@ int		parse_args(t_stack **a, int ac, char **argv);
 /* Small sorts */
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
-
+void	ft_fr(char *ptr);
 /* Operations */
 void	sa(t_stack **a, int iscalled);
 void	sb(t_stack **b, int iscalled);
@@ -97,9 +94,9 @@ char	*get_next_operation_from_buffer(char **buffer);
 
 size_t	ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);
-int		ft_strchr(char *s, char c);
+char	*ft_strchr(const char *s, int c);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s);
 int		ft_strcmp(const char *s1, const char *s2);
-
+void	ft_strncpy(char *dst, const char *src, int n);
 #endif

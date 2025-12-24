@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 17:10:19 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/14 13:25:07 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/22 18:53:46 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	clear_stack(t_stack **s)
 	*s = NULL;
 }
 
-static int	insert_digits(t_stack **a, char **digits)
+int	insert_digits(t_stack **a, char **digits)
 {
 	int	j;
 
