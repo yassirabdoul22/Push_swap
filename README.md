@@ -1,28 +1,35 @@
+*This project has been created as part of the 42 curriculum by yaabdoul.*
+
 # 🔢 push_swap
 
 ## 📌 Description
 
 **push_swap** est un projet du **Common Core de l’école 42**.  
-L’objectif est de trier une pile d’entiers en utilisant **un nombre limité
-d’opérations**, tout en produisant **le minimum de mouvements possible**.
+L’objectif est de trier une pile d’entiers en utilisant **un ensemble limité
+d’opérations**, tout en générant **le nombre minimal de mouvements possible**.
 
-Ce projet permet de renforcer :
+Le programme reçoit une liste d’entiers en arguments et doit produire sur la sortie
+standard la suite d’instructions permettant de trier la pile.
+
+Ce projet permet de développer :
 - la compréhension des **algorithmes de tri**
 - la manipulation de **structures de données**
 - l’optimisation des performances
 - la rigueur en **langage C**
+- la gestion fine de la mémoire
 
 ---
 
 ## 🧠 Principe du projet
 
-Le programme reçoit une liste d’entiers en arguments et doit les trier à l’aide
-de **deux piles** :
+Le tri est réalisé à l’aide de **deux piles** :
 
 - **Pile A** : pile principale (entrée)
 - **Pile B** : pile auxiliaire
 
-Seules les opérations autorisées par le sujet peuvent être utilisées.
+Au départ, tous les nombres sont dans la pile A.  
+L’objectif est d’obtenir une pile A triée par ordre croissant, en utilisant
+exclusivement les opérations autorisées par le sujet.
 
 ---
 
@@ -54,37 +61,39 @@ Seules les opérations autorisées par le sujet peuvent être utilisées.
 - Langage : **C**
 - Structures de données : **listes chaînées**
 - Indexation des valeurs (compression des nombres)
-- Gestion stricte de la mémoire
-- Respect de la **norme 42**
+- Gestion stricte de la mémoire (pas de leaks)
+- Respect de la **Norme 42**
 - Aucune fonction interdite
 
 ---
 
-## 🧮 Algorithme de tri : Chunk / Turk Algorithm
+## 🧮 Algorithme de tri — Chunk / Turk Algorithm
 
-Pour les grandes entrées (≥ 100 nombres), le programme utilise une stratégie
-basée sur le **découpage en chunks**, aussi appelée **Turk Algorithm** à 42.
+Pour les entrées de grande taille (≥ 100 nombres), une stratégie basée sur le
+**découpage en chunks**, aussi appelée **Turk Algorithm**, est utilisée.
 
 ### 🔹 1. Indexation
 
-Chaque valeur est remplacée par son **rang dans l’ordre trié**.
+Chaque nombre est remplacé par son **index dans la version triée du tableau**.
+Cela permet de simplifier les comparaisons et d’optimiser le tri.
+
 ---
 
 ### 🔹 2. Découpage en chunks
 
 La pile A est divisée en **groupes de valeurs consécutives (chunks)**.
 
-Exemple :
+Exemples :
 - 100 nombres → ~5 chunks
 - 500 nombres → ~11 chunks
 
-Chaque chunk représente une plage d’index :
+Chaque chunk correspond à une plage d’index précise.
 
 ---
 
 ### 🔹 3. Transfert vers la pile B
 
-- On parcourt la pile A
+- Parcours de la pile A
 - Si l’élément appartient au chunk courant :
   - `pb` vers la pile B
   - `rb` si l’élément est dans la moitié basse du chunk
@@ -92,45 +101,34 @@ Chaque chunk représente une plage d’index :
   - `ra` pour continuer la recherche
 
 Objectif :
-➡️ organiser la pile B de façon quasi triée.
+➡️ organiser la pile B de manière presque triée.
 
 ---
 
 ### 🔹 4. Reconstruction de la pile A
 
 Une fois la pile A vide :
-
-- On recherche le **plus grand index** dans la pile B
-- On le remonte en tête avec :
-  - `rb` ou `rrb` (selon le chemin le plus court)
-- Puis `pa`
+- Recherche du **plus grand index** dans la pile B
+- Rotation optimale (`rb` ou `rrb`)
+- `pa` pour le remettre dans la pile A
 
 Cette étape est répétée jusqu’à ce que la pile B soit vide.
 
-Résultat :
-➡️ **Pile A entièrement triée**
+➡️ Résultat : **pile A entièrement triée**
 
 ---
 
 ## 📊 Optimisations
 
 - Nombre de chunks ajusté dynamiquement
-- Rotations minimales (`ra`, `rra`)
-- Utilisation intelligente de `rb`
-- Réduction significative du nombre d’opérations
+- Choix intelligent entre rotations (`ra` / `rra`)
+- Utilisation optimisée de `rb`
+- Réduction significative du nombre total d’opérations
 
 ---
 
-## ▶️ Utilisation
+## ▶️ Instructions
 
 ### Compilation
 ```bash
 make
-# 🔢 push_swap
-
-## ▶️ Exécution
-
-```bash
-./push_swap 4 67 3 87 23
-
-
