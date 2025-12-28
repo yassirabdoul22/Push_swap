@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 18:38:35 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/20 21:04:43 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/28 16:11:04 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,30 @@ void	ft_fr(char *ptr)
 	if (ptr)
 		free(ptr);
 }
-
-void	ft_strncpy(char *dst, const char *src, int n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int	i;
+	void	*ptr;
 
-	i = 0;
-	while (i < n && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
+	if (!nmemb || !size)
+		return (NULL);
+	if (size == 0 || size > SIZE_MAX / nmemb)
+		return (NULL);
+	ptr = malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	int i = 0;
 
-	i = 0;
 	while (s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
+		i++; 
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
@@ -78,25 +74,33 @@ int	apply_operation(t_stack **a, t_stack **b, const char *op)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+void	ft_free_stacks(t_stack *a,t_stack *b)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc < 2)
-		return (0);
-	if (!parse_args(&a, argc, argv))
-		return (-1);
-	execute_operations(&a, &b);
-	if (ft_is_sorted(a) && b == NULL)
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
 	while (a)
 		remove_first(&a);
 	while (b)
 		remove_first(&b);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	t_stack	*b;
+	int is_parsed;
+	
+	a = NULL;
+	b = NULL;
+	if (argc < 2)
+		return (0);
+	is_parsed = parse_args(&a, argc, argv);
+	if (!is_parsed)
+		return (-1);
+	if(execute_operations(&a, &b) == -1)
+			ft_free_stacks(a,b);
+	if (ft_is_sorted(a) && b == NULL )
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	ft_free_stacks(a,b);
 	return (0);
 }

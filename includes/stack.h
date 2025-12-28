@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:05:57 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/20 21:09:32 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/28 16:12:07 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdint.h>
+# define BUFFER_SIZE 32
 
 typedef struct s_stack
 {
@@ -65,7 +66,7 @@ int		apply_operation(t_stack **a, t_stack **b, const char *op);
 t_stack	*find_smallest(t_stack *a);
 t_stack	*find_in_chunk(t_stack *a, int min, int max);
 void	assign_index(t_stack *a);
-void	execute_operations(t_stack **a, t_stack **b);
+int		execute_operations(t_stack **a, t_stack **b);
 int		get_chunk_size(int size);
 void	update_chunk_limits(int *min, int *max, int chunk);
 void	find_target(t_stack *a, t_stack *b);
@@ -81,22 +82,15 @@ int		ft_abs(int n);
 int		get_cost(int pos, int size);
 int		find_position(t_stack *s, int index);
 
-/* Libft */
 void	ft_free(char **fr);
 char	**ft_split(char *str, char c);
 int		is_separator(char c, char sep);
 int		count_words(char *str, char sep);
 char	*malloc_word(char *str, char sep);
-char	*read_operations(int fd);
-char	*extract_operation(char *buffer);
-char	*update_buffer(char *buffer);
-char	*get_next_operation_from_buffer(char **buffer);
 
-size_t	ft_strlen(char *s);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(const char *s, int c);
+
+
+
+void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-char	*ft_strdup(const char *s);
-int		ft_strcmp(const char *s1, const char *s2);
-void	ft_strncpy(char *dst, const char *src, int n);
 #endif
