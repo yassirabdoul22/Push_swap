@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 18:38:35 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/28 17:30:22 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/28 18:01:59 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	int		is_parsed;
+	int		exec;
 
 	a = NULL;
 	b = NULL;
@@ -95,13 +96,10 @@ int	main(int argc, char **argv)
 		return (0);
 	is_parsed = parse_args(&a, argc, argv);
 	if (is_parsed < 0)
-		return (-1);
-	if (!execute_operations(&a, &b))
-	{
-		write(2, "Error\n", 6);
-		ft_free_stacks(a, b);
-		return (0);
-	}
+		return (ft_free_stacks(a, b), (-1));
+	exec = execute_operations(&a, &b);
+	if (exec == -1)
+		return (ft_free_stacks(a, b), (0));
 	if (ft_is_sorted(a) && b == NULL)
 		write(1, "OK\n", 3);
 	else
