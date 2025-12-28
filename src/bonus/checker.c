@@ -6,17 +6,12 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 18:38:35 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/28 16:11:04 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/28 17:30:22 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
 
-void	ft_fr(char *ptr)
-{
-	if (ptr)
-		free(ptr);
-}
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
@@ -26,7 +21,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (size == 0 || size > SIZE_MAX / nmemb)
 		return (NULL);
 	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
+	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
@@ -34,15 +29,21 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	int i = 0;
+	int	i;
+	int	res;
 
+	i = 0;
 	while (s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++; 
+		{
+			res = (unsigned char)s1[i] - (unsigned char)s2[i];
+			return (res);
+		}
+		i++;
 	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	res = (unsigned char)s1[i] - (unsigned char)s2[i];
+	return (res);
 }
 
 int	apply_operation(t_stack **a, t_stack **b, const char *op)
@@ -74,7 +75,7 @@ int	apply_operation(t_stack **a, t_stack **b, const char *op)
 	return (1);
 }
 
-void	ft_free_stacks(t_stack *a,t_stack *b)
+void	ft_free_stacks(t_stack *a, t_stack *b)
 {
 	while (a)
 		remove_first(&a);
@@ -86,21 +87,25 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int is_parsed;
-	
+	int		is_parsed;
+
 	a = NULL;
 	b = NULL;
 	if (argc < 2)
 		return (0);
 	is_parsed = parse_args(&a, argc, argv);
-	if (!is_parsed)
+	if (is_parsed < 0)
 		return (-1);
-	if(execute_operations(&a, &b) == -1)
-			ft_free_stacks(a,b);
-	if (ft_is_sorted(a) && b == NULL )
+	if (!execute_operations(&a, &b))
+	{
+		write(2, "Error\n", 6);
+		ft_free_stacks(a, b);
+		return (0);
+	}
+	if (ft_is_sorted(a) && b == NULL)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	ft_free_stacks(a,b);
+	ft_free_stacks(a, b);
 	return (0);
 }

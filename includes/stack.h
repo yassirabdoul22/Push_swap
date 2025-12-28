@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:05:57 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/28 16:12:07 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/28 17:19:26 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,12 @@ int		ft_abs(int n);
 int		get_cost(int pos, int size);
 int		find_position(t_stack *s, int index);
 
+int		ft_strlen(char *str);
 void	ft_free(char **fr);
 char	**ft_split(char *str, char c);
 int		is_separator(char c, char sep);
 int		count_words(char *str, char sep);
 char	*malloc_word(char *str, char sep);
-
-
-
-
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 #endif

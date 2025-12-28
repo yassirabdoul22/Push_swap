@@ -6,11 +6,27 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 18:27:41 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/14 13:23:26 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/28 17:32:56 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/stack.h"
+
+void	ft_fr(char *ptr)
+{
+	if (ptr)
+		free(ptr);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 void	pa(t_stack **a, t_stack **b, int called)
 {

@@ -6,7 +6,7 @@
 #    By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/08 18:28:19 by yaabdoul          #+#    #+#              #
-#    Updated: 2025/12/20 17:41:25 by yaabdoul         ###   ########.fr        #
+#    Updated: 2025/12/28 16:26:13 by yaabdoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME        = push_swap
 BONUS_NAME  = checker
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -fsanitize=address -g3 -Wall -Wextra -Werror
 
 SRC_DIRS    = ./src/operations ./src/sort ./src/stack ./src/utils
 
@@ -36,7 +36,6 @@ SRCS        = push_swap.c \
 
 BONUS_SRCS  = src/bonus/checker.c \
               src/bonus/read_operations.c \
-              src/bonus/read_operations_utils.c \
               src/operations/operations_push.c \
               src/operations/operations_rotate.c \
               src/operations/operations_reverse_rotate.c \

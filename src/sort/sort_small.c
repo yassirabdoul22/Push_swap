@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:00:00 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/23 18:55:37 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/28 16:16:30 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	sort_five(t_stack **a, t_stack **b)
 	int	min;
 	int	idx;
 	int	size;
-	write(1,"ta",2);
+
 	if (!a || !*a)
 		return ;
 	if (ft_is_sorted(*a))
