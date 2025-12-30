@@ -14,7 +14,7 @@ NAME        = push_swap
 BONUS_NAME  = checker
 
 CC          = cc
-CFLAGS      = -fsanitize=address -g3 -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror
 
 SRC_DIRS    = ./src/operations ./src/sort ./src/stack ./src/utils
 

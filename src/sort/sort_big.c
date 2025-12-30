@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 18:00:00 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/14 13:24:34 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/30 20:13:11 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,13 @@ static void	push_chunks(t_stack **a, t_stack **b)
 	int		max;
 	int		chunk;
 	t_stack	*tmp;
+	int		size;
 
-	chunk = get_chunk_size(stack_size(*a));
+	size = stack_size(*a);
+	chunk = get_chunk_size(size);
 	min = 0;
 	max = chunk - 1;
-	while (*a)
+	while (stack_size(*a) > 3)
 	{
 		tmp = find_in_chunk(*a, min, max);
 		if (!tmp)
@@ -80,10 +82,7 @@ void	turk_sort(t_stack **a, t_stack **b)
 	t_stack	*cheap;
 
 	push_chunks(a, b);
-	if (stack_size(*a) == 2)
-		ra(a, 0);
-	else if (stack_size(*a) == 3)
-		sort_three(a);
+	sort_three(a);
 	while (*b)
 	{
 		find_target(*a, *b);

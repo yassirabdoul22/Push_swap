@@ -6,7 +6,7 @@
 /*   By: yaabdoul <yaabdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 22:50:22 by yaabdoul          #+#    #+#             */
-/*   Updated: 2025/12/15 20:53:42 by yaabdoul         ###   ########.fr       */
+/*   Updated: 2025/12/30 20:18:21 by yaabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_chunk_size(int size)
 	if (size <= 100)
 		return (20);
 	if (size <= 500)
-		return (50);
+		return (60);
 	return (100);
 }
 
